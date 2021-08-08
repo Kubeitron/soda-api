@@ -12,8 +12,12 @@ TBD
 - Build and bring up the local dev container: `docker-compose up -d api`
 - Attach to the container using VScode's extension: [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 - Develop!
+- you can run your binaries in the container: `cd cmd/api/ && go build && ./api`
 
-- `Note` you need to re-build the image if you need to install any go modules via `go get`
+- `Note` you need to re-build the image if you need to install any go modules via `go get` outside the container (working on a fix for this)
+
+# To test
+- Run `go test ./cmd/api/tests`
 
 # Misc
 - For the OpenAPI spec, refer to http://localhost:5000/swagger/index.html while running the API
