@@ -34,11 +34,6 @@ func MockAPI() (h *handlers.Handler) {
 
 	// Establish db client
 	db := db.NewMongodb()
-	defer func() {
-		if err := db.Conn.Disconnect(db.BaseCtx); err != nil {
-			panic(err)
-		}
-	}()
 
 	handler := handlers.New()
 	handler.Register(api)
