@@ -1,4 +1,11 @@
+basePath: /
 info:
   contact: {}
+  description: Contains data on Kubernetes resources
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: SODA API
+  version: "0.1"
 paths: {}
 swagger: "2.0"
