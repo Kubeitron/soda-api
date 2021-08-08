@@ -7,6 +7,8 @@ require (
 	github.com/go-openapi/spec v0.20.0 // indirect
 	github.com/labstack/echo/v4 v4.5.0
 	github.com/mattn/go-isatty v0.0.13 // indirect
+	github.com/stretchr/testify v1.6.1 // indirect
+	github.com/swaggo/echo-swagger v1.1.2 // indirect
 	github.com/swaggo/swag v1.7.0
 	go.mongodb.org/mongo-driver v1.7.0
 	golang.org/x/crypto v0.0.0-20210711020723-a769d52b0f97 // indirect
