@@ -14,3 +14,7 @@ TBD
 - Develop!
 
 - `Note` you need to re-build the image if you need to install any go modules via `go get`
+
+# Misc
+- For the OpenAPI spec, refer to http://localhost:5000/swagger/index.html while running the API
+- To update the swagger spec, run `swag i cmd/api/` from the project root
