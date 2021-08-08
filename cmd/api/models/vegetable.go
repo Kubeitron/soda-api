@@ -7,3 +7,7 @@ type Vegetable struct {
 	Vitamins string
 	Calories int
 }
+
+const (
+	VegetableCollectionName = "vegetables"
+)

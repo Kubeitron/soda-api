@@ -6,7 +6,7 @@ import (
 
 type (
 	VegetableStore struct {
-		db *db.Mongodb
+		Db *db.Mongodb
 	}
 )
 

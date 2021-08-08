@@ -1,8 +1,15 @@
 package handlers
 
 import (
+	"context"
+	"log"
+	"net/http"
+
+	"github.com/Kubeitron/soda-api/cmd/api/models"
 	"github.com/Kubeitron/soda-api/cmd/api/store"
 	"github.com/labstack/echo/v4"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 type (
@@ -18,29 +25,28 @@ func NewVegetableHandler(store *store.VegetableStore) (h *VegetableHandler) {
 }
 
 func (h *VegetableHandler) GetVegetables(c echo.Context) error {
-	// vc := db.Database(dbName).Collection(VegetableCollection)
-	// findOptions := options.Find()
-	// findOptions.SetLimit(20)
-	// var resultSet []*Vegetable
-	// cur, err := vc.Find(context.TODO(), bson.D{{}}, findOptions)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// for cur.Next(context.TODO()) {
-	// 	var elem Vegetable
-	// 	err := cur.Decode(&elem)
-	// 	if err != nil {
-	// 		log.Fatal(err)
-	// 	}
-	// 	resultSet = append(resultSet, &elem)
-	// }
-	// if err := cur.Err(); err != nil {
-	// 	log.Fatal(err)
-	// }
-	// cur.Close(context.TODO())
-	// content := c.JSON(http.StatusOK, resultSet)
-	// return content
-	return nil
+	vc := h.store.Db.Conn.Database(h.store.Db.DbName).Collection(models.VegetableCollectionName)
+	findOptions := options.Find()
+	findOptions.SetLimit(20)
+	var resultSet []*models.Vegetable
+	cur, err := vc.Find(context.TODO(), bson.D{{}}, findOptions)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for cur.Next(context.TODO()) {
+		var elem models.Vegetable
+		err := cur.Decode(&elem)
+		if err != nil {
+			log.Fatal(err)
+		}
+		resultSet = append(resultSet, &elem)
+	}
+	if err := cur.Err(); err != nil {
+		log.Fatal(err)
+	}
+	cur.Close(context.TODO())
+	content := c.JSON(http.StatusOK, resultSet)
+	return content
 }
 
 // func postVegetable(c echo.Context) error {

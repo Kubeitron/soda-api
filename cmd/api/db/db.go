@@ -15,6 +15,7 @@ type (
 	Mongodb struct {
 		BaseCtx context.Context
 		Conn    *mongo.Client
+		DbName  string
 	}
 )
 
@@ -43,6 +44,7 @@ func NewMongodb() *Mongodb {
 	db := &Mongodb{
 		ctx,
 		client,
+		dbName,
 	}
 	return db
 }
